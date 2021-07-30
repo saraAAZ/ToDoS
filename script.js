@@ -1,7 +1,9 @@
 let inputContent = document.getElementById("inputItem");
 let addBtn = document.querySelector(".inputField button");
 let timeBtn = document.querySelector(".time");
+let spanCounter = document.querySelector(".counterItem");
 let counter = 0;
+let clearItem = document.querySelector(".clear");
 
 
 
@@ -10,7 +12,9 @@ let counter = 0;
 // }else (inputContent.value.trim() !=0 && timeBtn.value.trim()!=0){
 //     addBtn.classList.remove("active");
 // }
-let toDoContainer = document.querySelector(".toDo"); 
+
+addBtn.addEventListener('click', function() {
+    let toDoContainer = document.querySelector(".toDo"); 
     let objectToDo = document.createElement("div"); 
     objectToDo.className = "toDoItem , backColor";
     let itemContainer =  document.createElement("div");
@@ -24,9 +28,26 @@ let toDoContainer = document.querySelector(".toDo");
     let buttonTrash= document.createElement("button");
     buttonTrash.className="trash";
     buttonTrash.innerHTML='<i class="fas fa-trash-alt trashIcon"></i>';
-addBtn.addEventListener('click', function() {
     
-
+    timeCr.innerHTML =timeBtn.value;
+    console.log(timeBtn.value);
+    let x = setInterval(function() {
+       
+        let currentTime = timeBtn.value;
+        let updateTime = currentTime -1;
+        console.log(currentTime);
+        console.log(updateTime);
+        timeCr.innerHTML =updateTime;
+        if(updateTime == -1){
+            checkLabel.disabled=true;
+            console.log("late");
+            objectToDo.classList.remove("backColor");
+            objectToDo.classList.add("late");
+            timeCr.innerHTML="late";
+        } 
+       
+      }, 60000);
+      
    
     if(isNaN(timeBtn.value)){
         alert("You Should Enter A number");
@@ -36,14 +57,10 @@ addBtn.addEventListener('click', function() {
     }else if(timeBtn.value.trim()==0){
         alert("Enter Expired Time");
     }else if(inputContent.value.trim()==0){
-        alert("Enter Expired Time");
+        alert("Enter what you wont to do");
     }else{
 
         item.innerHTML= inputContent.value;
-        timeCr.innerHTML = timeBtn.value;
-        let start=timeBtn.value;
-
-
         itemContainer.appendChild(checkLabel);
         itemContainer.appendChild(item);
         itemContainer.appendChild(timeCr);
@@ -53,24 +70,41 @@ addBtn.addEventListener('click', function() {
 
         inputContent.value="";
         timeBtn.value="";
+        counter++;
     
     }
     
-    })
-
+    console.log(counter);
+    spanCounter.innerHTML=counter;
     buttonTrash.addEventListener('click',function(){
-    toDoContainer.removeChild(objectToDo);
-
-    })
-    checkLabel.addEventListener('click', function(){
-        if(checkLabel.checked == true){
-            console.log("true");
-            checkLabel.classList.remove("backColor");
-            checkLabel.classList.remove("done");
-        }else{
-            console.log("flase");
-        }
-        
-    })
+        toDoContainer.removeChild(objectToDo);
+        counter--;
+        spanCounter.innerHTML=counter;
     
+        })
+        checkLabel.addEventListener('change', function(){
+            if(checkLabel.checked == true){
+                console.log("true");
+                checkLabel.disabled=true;
+                timeCr.innerHTML="Done";
+                objectToDo.classList.remove("backColor");
+                objectToDo.classList.add("done");
+                
+            }else{
+                objectToDo.classList.add("backColor");
+                objectToDo.classList.remove("done");
+        
+            }
+            
+        })
+        
+        clearItem.addEventListener('click',function(){
+            toDoContainer.removeChild(objectToDo);
+            spanCounter.innerHTML= 0;
+        
+            })
 
+    
+    })
+
+    

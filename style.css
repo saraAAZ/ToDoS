@@ -84,6 +84,7 @@ body{
     text-align: center;
     justify-content: space-between; */ 
 }
+
 .trash{
     outline: none;
     border: none;
@@ -98,6 +99,9 @@ body{
 }
 .done{
     background: rgb(112, 163, 112);
+}
+.late{
+    background: rgb(226, 106, 106);
 }
 .toDoItem span {
     font-size: 16px;
