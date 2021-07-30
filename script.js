@@ -76,8 +76,9 @@ addBtn.addEventListener('click', function() {
         counter++;
         if(counter>0){
             clearItem.classList.add("buttonApperance");
-            
+        
         }
+       
     
     }
     
@@ -87,6 +88,10 @@ addBtn.addEventListener('click', function() {
         toDoContainer.removeChild(objectToDo);
         counter--;
         spanCounter.innerHTML=counter;
+        if(counter == 0){
+            clearItem.classList.remove("buttonApperance");
+        
+        }
     
         })
         checkLabel.addEventListener('change', function(){
