@@ -25,6 +25,8 @@ addBtn.addEventListener('click', function() {
     let item = document.createElement("span");
     item.className="itemSpan";
     let timeCr=document.createElement("small");
+    let minute=document.createElement("small");
+    minute.innerHTML=" m"
     let buttonTrash= document.createElement("button");
     buttonTrash.className="trash";
     buttonTrash.innerHTML='<i class="fas fa-trash-alt trashIcon"></i>';
@@ -64,6 +66,7 @@ addBtn.addEventListener('click', function() {
         itemContainer.appendChild(checkLabel);
         itemContainer.appendChild(item);
         itemContainer.appendChild(timeCr);
+        itemContainer.appendChild(minute);
         objectToDo.appendChild(itemContainer);
         objectToDo.appendChild(buttonTrash);
         toDoContainer.appendChild(objectToDo);
@@ -71,6 +74,9 @@ addBtn.addEventListener('click', function() {
         inputContent.value="";
         timeBtn.value="";
         counter++;
+        if(counter>0){
+            clearItem.classList.add("buttonApperance");
+        }
     
     }
     

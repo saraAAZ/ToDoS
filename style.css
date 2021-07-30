@@ -42,13 +42,15 @@ body{
     width: 15%;
     border: solid 1px rgb(194, 191, 191);
     height: 100%;
-    font-size: 16px;
-    padding-left: 14px;
+    font-size: 10px;
+    /* padding-left: 14px; */
     border-radius: 3px;
     box-shadow: 0px 6px 10px -6px rgba(65, 62, 62, 0.59);
     outline: none;
+    text-align: center;
     
 }
+
 .inputField button{
     width: 10%;
     margin-left: 4px;
@@ -99,6 +101,7 @@ body{
 }
 .done{
     background: rgb(112, 163, 112);
+    text-decoration: line-through;
 }
 .late{
     background: rgb(226, 106, 106);
@@ -117,7 +120,7 @@ footer{
     align-items: center;
     justify-content: space-between;
 }
-footer button{
+.clear{
     width: 80px;
     margin-left: 4px;
     height: 30px;
@@ -130,4 +133,8 @@ footer button{
     font-size: 11px;
     border-radius: 3px;
     cursor: pointer;
+    display: none;
+}
+.buttonApperance{
+    display: block;
 }
