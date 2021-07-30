@@ -76,6 +76,7 @@ addBtn.addEventListener('click', function() {
         counter++;
         if(counter>0){
             clearItem.classList.add("buttonApperance");
+            
         }
     
     }
@@ -93,12 +94,14 @@ addBtn.addEventListener('click', function() {
                 console.log("true");
                 checkLabel.disabled=true;
                 timeCr.innerHTML="Done";
+                itemContainer.removeChild(minute);
                 objectToDo.classList.remove("backColor");
                 objectToDo.classList.add("done");
                 
             }else{
                 objectToDo.classList.add("backColor");
                 objectToDo.classList.remove("done");
+                itemContainer.removeChild(minute);
         
             }
             
